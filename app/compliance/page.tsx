@@ -72,13 +72,7 @@ export default function CompliancePage() {
     <div className="min-h-screen bg-background p-8">
       <header className="mb-12">
         <div className="flex items-center gap-4">
-          <Image
-            src="/next.svg"
-            alt="Delve Logo"
-            width={120}
-            height={30}
-            className="dark:invert"
-          />
+ 
           <h1 className="text-2xl font-bold">Supabase Compliance Checker</h1>
         </div>
       </header>

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -10,21 +9,16 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    // Check if there's a code in the URL (from Supabase redirect)
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
     
     if (code) {
-      // Redirect to compliance page with the code
       router.push(`/compliance?code=${code}`);
       return;
     }
     
-    // Check if user is already authenticated
     const token = getCookie("supabase_access_token");
-    console.log("token", token);
     if (token) {
-      // User is already authenticated, redirect to compliance page
       router.push("/compliance");
     }
   }, [router]);
@@ -32,14 +26,7 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
+        <div className="text-3xl font-bold">Delve TakeHome</div>
         <h1 className="text-2xl font-bold">Supabase Compliance Checker</h1>
         <p className="text-lg">
           Check your Supabase configuration for compliance requirements.
@@ -52,20 +39,20 @@ export default function Home() {
           >
             Start Compliance Check
           </Link>
-          <a
+          {/* <a
             className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
             href="https://supabase.com/docs"
             target="_blank"
             rel="noopener noreferrer"
           >
             Supabase Docs
-          </a>
+          </a> */}
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <p className="text-sm text-gray-500">
+        {/* <p className="text-sm text-gray-500">
           Delve Supabase Compliance Checker
-        </p>
+        </p> */}
       </footer>
     </div>
   );
